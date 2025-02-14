@@ -27,3 +27,8 @@ The result of that is bot that can function with multiple user's inputs at the s
 If user is lucky enough and random library has chosen three 7️⃣, for instance, the user will be granted +300 "coins" on their balance.
 - The balance system works through using the SQL language and aiosqlite library for SQL functions to be executed in async mode. The balance of each user is stored in 
 "money.db" file, which consists of two columns, first is for the user's id, second is for the amount of money on the user's "account". A new row is created for every user.
+
+---
+
+### P.S.
+- I didn't add the token of the bot, since I don't want to anybody easily access my bot. The same goes for the money.db file, I edited first columns as "id1", "id2" respectivly, so as to not share with everyone my telegram id. However, you can input your token and clear/delete "money.db" file, everything will work.
