@@ -30,4 +30,4 @@ it would look better. Finally, we have a result.
 ---
 
 ### P.S.
-- I didn't add the token of the bot, since I don't want to anybody easily access my bot.
+- I didn't add the token of the bot, since I don't want anybody to easily access my bot.
