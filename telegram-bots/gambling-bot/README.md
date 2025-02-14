@@ -31,4 +31,4 @@ If user is lucky enough and random library has chosen three 7️⃣, for instanc
 ---
 
 ### P.S.
-- I didn't add the token of the bot, since I don't want to anybody easily access my bot. The same goes for the money.db file, I edited first columns as "id1", "id2" respectivly, so as to not share with everyone my telegram id. However, you can input your token and clear/delete "money.db" file, everything will work.
+- I didn't add the token of the bot, since I don't want anybody to easily access my bot. The same goes for the money.db file, I edited first columns as "id1", "id2" respectivly, so as to not share with everyone my telegram id. However, you can input your token and clear/delete "money.db" file, everything will work.
