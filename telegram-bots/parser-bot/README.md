@@ -7,7 +7,7 @@ The code uses multiple libraries, such as asyncio, logging, aiogram, BeautifulSo
 ---
 
 ### Short library description
-- Asyncio library allows bot to compute multiple functions at the same time, therefore "synchronized". It's the most necessary library for any kind of bot, since it allows
+- Asyncio library allows bot to compute multiple functions at the same time, therefore "asynchronous". It's the most necessary library for any kind of bot, since it allows
 him to keep his hard work even while dealing with thousands of users.
 - Logging library is not much of a use in this code exactly (I just didn't use it). It allows you to log every error that has came up during the bot's work.
 - Aiogram is the core library. It allows your code properly connect to the bot on telegram server side, send any data that is stored on the local PC to the bot and vice versa.
