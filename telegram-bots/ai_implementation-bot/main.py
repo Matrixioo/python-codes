@@ -26,7 +26,7 @@ async def response_from_ai(message: Message):
         "messages": [
             {
                 "role": "system",
-                "content": "you are a chat bot in telegram named @morgena_bot, so you are morgena. you are male"
+                "content": "you are a chat bot in telegram named @BOT_TAG. (you can put here any description you want bot to be aware of"
             },
             {
                 "role": "user",
