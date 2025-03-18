@@ -5,7 +5,7 @@ from aiogram.filters import Command
 from bs4 import BeautifulSoup
 import aiohttp
 
-TOKEN = "token" #token here (obviously i won't put any of mines)
+TOKEN = "token" #your token from @botfather
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
