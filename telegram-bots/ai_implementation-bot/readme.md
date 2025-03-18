@@ -52,10 +52,10 @@ This Telegram bot is written in Python using **aiogram**. It interacts with an A
 
 4. **Run the bot**
 
-## TO DO
-# Done
+# TO DO
+## Done
 - **Error handling.** Implement error handling to manage API failures and invalid responses.
 - **Memory.** So that the bot could remember past messages from the user, so the conversation would be more natural.
-# To be done
+## To be done
 - **Improve memory.** Apparently, memory sometimes functions poorly. The bot may perceive the installations as a message, which should not occur. It would be wise to change the memory library.
 - **Optimization.** Supposedly not possible since the performance speed is mainly depends on the API answering speed. The best possible solution is to switch to a paid API.
