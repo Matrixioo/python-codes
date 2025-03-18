@@ -2,7 +2,7 @@ import aiosqlite as sq
 
 db = None
 
-async def db_create() -> None: #creates a new database
+async def db_create(): #creates a new database
     global db
     db = await sq.connect('messages.db')
 
@@ -15,7 +15,7 @@ async def db_create() -> None: #creates a new database
 
     await db.commit()
 
-async def get_last_message(user_id):
+async def get_last_message(user_id): #gets last 5 messages from the user and the bot
     if db is None:
         await db_create()
 
@@ -27,7 +27,7 @@ async def get_last_message(user_id):
 
     return [{"role": role, "content": content} for role, content in reversed(messages)]
 
-async def save_message(user_id, role, content):
+async def save_message(user_id, role, content): #saves last 5 messages from the bot and the user
     if db is None:
         await db_create()
 
@@ -37,6 +37,6 @@ async def save_message(user_id, role, content):
     await db.execute("DELETE FROM messages WHERE user_id = ? AND id NOT IN (SELECT id FROM messages WHERE user_id = ? ORDER BY id DESC LIMIT 10)", (user_id, user_id))
 
 
-# async def close_db() -> None: #stops database func
+# async def close_db(): #stops database func
 #     if db is not None:
 #         await db.close()
