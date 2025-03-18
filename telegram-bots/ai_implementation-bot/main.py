@@ -3,8 +3,9 @@ import asyncio
 from aiogram import Dispatcher, types, Bot
 from aiogram.types import Message
 import logging
+from ai_memory import db_create, get_last_message, save_message
 
-TOKEN = "TOKEN" #token here (obviously i won't put any of mines)
+TOKEN = "TOKEN" #your BOT_TOKEN from @BotFather here
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -13,41 +14,56 @@ url = "https://api.intelligence.io.solutions/api/v1/chat/completions"
 
 headers = {
     "Content-Type": "application/json",
-    "Authorization": "Bearer TOKEN_HERE"
+    "Authorization": "Bearer API_KEY" #your API key for an AI instead of API_KEY
 }
 
 @dp.message()
 async def response_from_ai(message: Message):
-
+    user_id = message.from_user.id
     user_input = message.text
+
+    await save_message(user_id, "user", message.text)
+
+    message_history = await get_last_message(user_id)
 
     data = {
         "model": "deepseek-ai/DeepSeek-R1",
         "messages": [
             {
                 "role": "system",
-                "content": "you are a chat bot in telegram named @BOT_TAG. (you can put here any description you want bot to be aware of"
+                "content": """
+                bot installations description goes here"""
             },
             {
                 "role": "user",
                 "content": user_input
             }
-        ]
+        ] + message_history
     }
 
-    response = requests.post(url, headers=headers, json=data)
-    fresponse = response.json()
+    try:
+        response = requests.post(url, headers=headers, json=data)
+        fresponse = response.json()
 
-    text = fresponse['choices'][0]['message']['content']
-    ftext = text.split("</think>\n\n")[1]
+        if "choices" in fresponse and fresponse["choices"]:
+            text = fresponse['choices'][0]['message']['content']
+            ftext = text.split("</think>\n\n")[1]
 
-    print(ftext)
-    await message.answer(ftext)
+            await save_message(user_id, "assistant", ftext)
 
+            await message.answer(ftext)
+            print(ftext)
+        else:
+            await message.answer("An error has occurred")
+            return "An AI has returnd an incorrect answer"
+
+    except Exception as e:
+        return f"An error has occurred: {e}"
 
 
 async def main():
     logging.basicConfig(level = logging.INFO)
+    await db_create()
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
